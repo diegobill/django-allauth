@@ -40,7 +40,8 @@ def fb_complete_login(request, app, token):
         params={
             'fields': ','.join(provider.get_fields()),
             'access_token': token.token,
-            'appsecret_proof': compute_appsecret_proof(app, token)
+            # Facebook Login fails in v0.25 #1384
+            #'appsecret_proof': compute_appsecret_proof(app, token)
         })
     resp.raise_for_status()
     extra_data = resp.json()
