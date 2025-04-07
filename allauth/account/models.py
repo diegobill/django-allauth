@@ -37,6 +37,9 @@ class EmailAddress(models.Model):
         verbose_name_plural = _("email addresses")
         if not app_settings.UNIQUE_EMAIL:
             unique_together = [("user", "email")]
+        indexes = [
+            models.Index(fields=['user']),
+        ]
 
     def __str__(self):
         return self.email
