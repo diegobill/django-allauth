@@ -39,6 +39,7 @@ class EmailAddress(models.Model):
             unique_together = [("user", "email")]
         indexes = [
             models.Index(fields=['user']),
+            models.Index(fields=['email']),
         ]
 
     def __str__(self):
